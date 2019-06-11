@@ -1,12 +1,14 @@
 body {
   text-align: center;
   font-family: "system-ui", sans-serif;
+  margin: 2em;
 }
 
 a {
-  padding: 2em;
+  padding: 1em;
   text-decoration: none;
   color: #1a1a1a;
+  white-space: nowrap;
 }
 
 .selected {
@@ -15,5 +17,5 @@ a {
 }
 
 button {
-  margin: 0 2em;
+  margin: 2em;
 }

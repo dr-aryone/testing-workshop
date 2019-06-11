@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 const Menu = () => {
   return (
     <header data-testid="menuContainer">
-      <h1>Menu</h1>
       <NavLink activeClassName="selected" to="/toggle">
         Toggle
       </NavLink>

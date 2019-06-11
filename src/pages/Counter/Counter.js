@@ -12,8 +12,9 @@ const Counter = () => {
       <h2>Counter</h2>
       <button data-testid="decrementButton" type="button" onClick={decrement}>
         -
-      </button>{" "}
-      <span data-testid="countValue">{count}</span>{" "}
+      </button>
+
+      <span data-testid="countValue">{count}</span>
       <button data-testid="incrementButton" type="button" onClick={increment}>
         +
       </button>

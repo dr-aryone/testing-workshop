@@ -7,6 +7,8 @@ import Toggle from "./pages/Toggle/Toggle";
 
 import Counter from "./pages/Counter/Counter";
 
+import Home from "./pages/Home/Home";
+
 import Menu from "./components/Menu/Menu";
 
 const Router = () => {
@@ -17,6 +19,7 @@ const Router = () => {
         <Route path="/toggle" component={Toggle} />
         <Route path="/counter" component={Counter} />
         <Route path="/change" component={ChangeName} />
+        <Route exact path="/" component={Home} />
       </Switch>
     </BrowserRouter>
   );

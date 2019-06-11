@@ -14,7 +14,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "present": "mdx-deck presentation/index.mdx"
+    "present": "mdx-deck presentation/index.mdx",
+    "present-build": "mdx-deck build presentation/index.mdx"
   },
   "eslintConfig": {
     "extends": "react-app"

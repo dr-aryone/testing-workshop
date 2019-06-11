@@ -1,7 +1,12 @@
-import future from "@mdx-deck/themes/future";
-import aspect from "@mdx-deck/themes/aspect";
+import { condensed, syntaxHighlighterPrism, aspect } from "@mdx-deck/themes";
+import theme from "./theme";
+import { Head } from "@mdx-deck/components";
 
-export const themes = [future, aspect];
+export const themes = [condensed, syntaxHighlighterPrism, aspect, theme];
+
+<Head>
+  <title>Testing Workshop</title>
+</Head>
 
 # Testing Workshop
 
@@ -19,23 +24,21 @@ _“The more your tests resemble the way your software is used, the more confide
 
 ---
 
-Don't test the implementation of a function, test the result
+#### Don't test the implementation of a function, test the result
 
 ---
 
-## So should I write unit tests everywhere and I'm good to go?
+#### So should I write unit tests everywhere and I'm good to go?
 
 ---
 
 👻
 
-Nope.
+## Nope.
 
 ---
 
-💪
-
-Testing an individual component is important
+#### Testing an individual component is important
 
 ---
 
@@ -43,15 +46,13 @@ _but_
 
 ---
 
-🙏
-
-Testing how all these components work together is arguably more important.
+#### Testing how all these components work together is arguably more important.
 
 ---
 
 😉
 
-Your users do not care about how your app is structured or what technology you are using
+#### Your users do not care about how your app is structured or what technology you are using
 
 ---
 
@@ -61,17 +62,17 @@ Your users do not care about how your app is structured or what technology you a
 
 😄
 
-The more useful aspect of these tests is that they protect against regression really well
+#### They protect against regression really well
 
 ---
 
 😔
 
-The downside is that sometimes you can’t tell what is being tested, and you could fall into a bad habit of updating snapshot tests blindly
+#### Sometimes you can’t tell what is being tested, and you could fall into a bad habit of updating snapshot tests blindly
 
 ---
 
-If your component does not update often, is not complex, and is easy to see exactly what you are testing, then a snapshot test _might_ work.
+#### If your component does not update often, is not complex, and is easy to see exactly what you are testing, then a snapshot test _might_ work.
 
 ---
 
@@ -79,7 +80,7 @@ If your component does not update often, is not complex, and is easy to see exac
 
 ---
 
-Always should always ask yourself:
+#### You should always ask yourself:
 
 ---
 
@@ -87,49 +88,66 @@ _“Does it help test how our users use this application?”_
 
 ---
 
-If the answer is: _"yes"_
+#### If the answer is: _"yes"_
 
 ---
 
-**Test how the user will really see and use your application**
+#### Test how the user will really see and use your application
+
+and
+
+#### Test if your compoment renders correctly
 
 ---
 
-If the answer is: _"no"_
+#### If the answer is: _"no"_
 
 ---
 
-**Test if your compoment renders correctly**
+#### Just test if your compoment renders correctly
 
 ---
 
-Yeah, simple as that.
+_Yeah, simple as that._
 
 ---
 
 🤓
 
-## _"But Pedro, can I create tests?"_
+## _"But how can I create tests?"_
 
 ---
 
-I use _testing-library_ and _jest_ to write my tests, and I'm gonna show you how I usually do it.
+#### I use _testing-library_ and _jest_ to write my tests, and I'm gonna show you how I usually do it.
 
 ---
 
-Imagine a page like this:
+#### Imagine a page like this:
 
 ---
 
 import Counter from "../src/pages/Counter/Counter.js";
 
-<Counter />
+<div
+  style={{
+    padding: "20px"
+  }}>
+  <Counter />
+</div>
 
 ---
 
-What should I test there?
+## What should I test there?
 
 ---
+
+## Checkout this guiding principles
+
+https://testing-library.com/docs/guiding-principles
+
+---
+
+## We will test:
 
 - If it render without errors
 
@@ -141,23 +159,13 @@ What should I test there?
 
 ---
 
-## First of all
+## Always start your component by its tests
 
-Always start your component by its tests
-
----
-
-So the first thing you'll do when you start to create this component is create a `Counter.test.js`
+So the first thing you'll do when you start to create this component is create a _Counter.test.js_
 
 ---
 
-## Checkout this guiding principles
-
-https://testing-library.com/docs/guiding-principles
-
----
-
-You'll need these imports:
+## You'll need these imports:
 
 ```js
 import React from "react";
@@ -167,9 +175,11 @@ import { render, fireEvent } from "@testing-library/react";
 
 ---
 
-## Always describe what you're testing
+## Describe what you're testing
 
-`describe("Counter Page", () => { "tests here" });`
+```js
+describe("Counter Page", () => {...});
+```
 
 ---
 
@@ -180,6 +190,16 @@ import { render, fireEvent } from "@testing-library/react";
 - Load the component
 
 - Match the snapshot
+
+---
+
+#### You can learn more about them and their priorities here:
+
+https://testing-library.com/docs/guide-which-query
+
+---
+
+#### But mainly, just keep in mind that you always try to select visible stuff like _text_, _placeholder_, _label_ and etc
 
 ---
 
@@ -217,25 +237,21 @@ it("Match Snapshot", () => {
 
 ---
 
-With these tests, you already have a good start to begin your **real** tests
+## With these tests, you already have a good start to begin your **real** tests
 
 ---
 
-I'll use some selectors, you can learn more about them and its priorities here:
+## We will check:
 
-https://testing-library.com/docs/guide-which-query
+- If the initial value of the counter is **0**
 
----
+- If the increment works
 
-But mainly, just keep in mind that you always prioritize visible stuff like `text`, `placeholder`, `label` and etc
-
----
-
-## Now to the real tests
+- If the decrement works
 
 ---
 
-## Test if the counter start with 0
+## Test if the counter start with **0**
 
 ```js
 it("Loads with initial counter as 0", () => {
@@ -247,7 +263,7 @@ it("Loads with initial counter as 0", () => {
 
 ---
 
-## Test if the increment work
+## Test if the increment works
 
 ```js
 it("Increment work", () => {
@@ -262,7 +278,7 @@ it("Increment work", () => {
 
 ---
 
-## Test if the decrement work
+## Test if the decrement works
 
 ```js
 it("Decrement work", () => {
@@ -285,27 +301,31 @@ it("Decrement work", () => {
 
 ## The real question is:
 
-_"Pedro, if I do it, is this component unbreakable?"_
+---
+
+_"If I do it, is this component unbreakable?"_
 
 ---
 
 👻
 
-Nope.
+## Nope.
 
 ---
 
-But at least it gives you more confidence, right?
+####
+
+😁
+
+#### But at least it gives you more confidence, right?
 
 ---
 
-Yes, _but_ only if you test real actions, not functions
+#### Yeah, _but_ only if you test real user interaction, not plain functions
 
 ---
 
-Always remember
-
-**If you struggle to test something, its because you messed up**
+#### If you struggle to test something, you fucked up
 
 ---
 
@@ -313,11 +333,13 @@ Always remember
 
 - Always create the test first
 - “Does it help test how our users use this application?”
-- Never put the blame on the test, it's your fault
-- Don't cry when a bug appears in production
+- Never put the blame on the test, he just want to help
+- Don't cry when a bug appears in production 😂
 
 ---
 
-## Checkout this repository to see more examples:
+👌
+
+#### Checkout this repository to see more examples:
 
 https://github.com/pedroapfilho/testing-workshop
