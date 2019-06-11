@@ -1,0 +1,313 @@
+import future from "@mdx-deck/themes/future";
+import aspect from "@mdx-deck/themes/aspect";
+
+export const themes = [future, aspect];
+
+# Testing Workshop
+
+---
+
+# Why?
+
+---
+
+_“The more your tests resemble the way your software is used, the more confidence they can give you.”_
+
+---
+
+# What the fuck does it mean anyway?
+
+---
+
+Don't test the implementation of a function, test the result
+
+---
+
+# So should I write unit tests everywhere and I'm good to go?
+
+---
+
+👻
+
+Nope.
+
+---
+
+💪
+
+Testing an individual component is important
+
+---
+
+_but_
+
+---
+
+🙏
+
+Testing how all these components work together is arguably more important.
+
+---
+
+😉
+
+Your users do not care about how your app is structured or what technology you are using
+
+---
+
+# Snapshot testing
+
+---
+
+😄
+
+The more useful aspect of these tests is that they protect against regression really well
+
+---
+
+😔
+
+The downside is that sometimes you can’t tell what is being tested, and you could fall into a bad habit of updating snapshot tests blindly
+
+---
+
+If your component does not update often, is not complex, and is easy to see exactly what you are testing, then a snapshot test _might_ work.
+
+---
+
+# Implementation
+
+---
+
+Always should always ask yourself:
+
+---
+
+_“Does it help test how our users use this application?”_
+
+---
+
+If the answer is: _"yes"_
+
+---
+
+**Test how the user will really see and use your application**
+
+---
+
+If the answer is: _"no"_
+
+---
+
+**Test if your compoment renders correctly**
+
+---
+
+Yeah, simple as that.
+
+---
+
+🤓
+
+# _"But Pedro, can I create tests?"_
+
+---
+
+I use _testing-library_ and _jest_ to write my tests, and I'm gonna show you how I usually do it.
+
+---
+
+Imagine a page like this:
+
+---
+
+## What should I test here?
+
+import Counter from "../src/pages/Counter/Counter.js";
+
+<Counter />
+
+---
+
+I guess you already know...
+
+---
+
+- if it render without errors
+
+- If it matches the snapshot
+
+- if it start with 0
+
+- if the _increment-decrement_ works
+
+---
+
+## First of all
+
+**always start your component by its tests**
+
+So the first thing you'll do when you start to create this component is create a `Counter.test.js`
+
+---
+
+You'll need these imports:
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { render, fireEvent } from "@testing-library/react";
+```
+
+---
+
+## Always describe what you're testing
+
+`describe("Counter Page", () => { "tests here" });`
+
+---
+
+# Start with RLM
+
+- Render the component
+
+- Load the component
+
+- Match the snapshot
+
+---
+
+## Test if it render
+
+```js
+it("Renders without crashing", () => {
+  ReactDOM.render(<Counter />, document.createElement("div"));
+  ReactDOM.unmountComponentAtNode(document.createElement("div"));
+});
+```
+
+---
+
+## Test if it loads
+
+```js
+it("Loads component", () => {
+  const { getByTestId } = render(<Counter />);
+  const counter = getByTestId("counterContainer");
+  expect(counter).toBeInTheDocument();
+});
+```
+
+---
+
+## Test if it matches the snapshot
+
+```js
+it("Match Snapshot", () => {
+  const { firstChild } = render(<Counter />);
+  expect(firstChild).toMatchSnapshot();
+});
+```
+
+---
+
+With these tests, you already have a good start to begin your **real** tests
+
+---
+
+I'll use some selectors, you can learn more about them and its priorities here:
+
+https://testing-library.com/docs/guide-which-query
+
+---
+
+But mainly, just keep in mind that you always prioritize visible stuff like `text`, `placeholder`, `label` and etc
+
+---
+
+## Test if the counter start with 0
+
+```js
+it("Loads with initial counter as 0", () => {
+  const { getByTestId } = render(<Counter />);
+  const countValue = getByTestId("countValue");
+  expect(countValue.textContent).toBe("0");
+});
+```
+
+---
+
+## Test if the increment work
+
+```js
+it("Increment work", () => {
+  const { getByTestId } = render(<Counter />);
+  const countValue = getByTestId("countValue");
+  const increment = getByTestId("incrementButton");
+  expect(countValue.textContent).toBe("0");
+  fireEvent.click(increment);
+  expect(countValue.textContent).toBe("1");
+});
+```
+
+---
+
+## Test if the decrement work
+
+```js
+it("Decrement work", () => {
+  const { getByTestId } = render(<Counter />);
+  const countValue = getByTestId("countValue");
+  const decrement = getByTestId("decrementButton");
+  expect(countValue.textContent).toBe("0");
+  fireEvent.click(decrement);
+  expect(countValue.textContent).toBe("-1");
+});
+```
+
+---
+
+🎉
+
+# Profit
+
+---
+
+## The real question is:
+
+_"Pedro, if I do it, is this component unbreakable?"_
+
+---
+
+👻
+
+Nope.
+
+---
+
+But at least it gives you more confidence, right?
+
+---
+
+Yes, _but_ only if you test real actions, not functions
+
+---
+
+And always remember
+
+**If you struggle to test something, its because you messed up**
+
+---
+
+# Just for you to remember
+
+- Always create the test first
+- “Does it help test how our users use this application?”
+- Never put the blame on the test, it's your fault
+- Don't cry when a bug appears in production
+
+---
+
+## Checkout this repository to see more examples:
+
+https://github.com/pedroapfilho/testing-workshop

@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+  font-family: "system-ui", sans-serif;
+}
+
+a {
+  padding: 2em;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+button {
+  margin: 0 2em;
+}

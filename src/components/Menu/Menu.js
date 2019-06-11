@@ -1,13 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Menu = () => {
   return (
     <header data-testid="menuContainer">
       <h1>Menu</h1>
-      <Link to="/toggle">Toggle</Link>
-      <Link to="/change">Change Name</Link>
-      <Link to="/counter">Counter</Link>
+      <NavLink activeClassName="selected" to="/toggle">
+        Toggle
+      </NavLink>
+      <NavLink activeClassName="selected" to="/change">
+        Change Name
+      </NavLink>
+      <NavLink activeClassName="selected" to="/counter">
+        Counter
+      </NavLink>
     </header>
   );
 };
