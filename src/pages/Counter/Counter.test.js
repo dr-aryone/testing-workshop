@@ -41,9 +41,9 @@ describe("Counter Page", () => {
 
     expect(countValue.textContent).toBe("0");
 
-    fireEvent.click(increment);
+    for (let i = 0; i < 10; i += 1) fireEvent.click(increment);
 
-    expect(countValue.textContent).toBe("1");
+    expect(countValue.textContent).toBe("10");
   });
 
   it("Decrement work", () => {

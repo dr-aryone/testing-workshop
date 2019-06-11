@@ -7,7 +7,7 @@ export const themes = [future, aspect];
 
 ---
 
-# Why?
+## Why?
 
 ---
 
@@ -15,7 +15,7 @@ _“The more your tests resemble the way your software is used, the more confide
 
 ---
 
-# What the fuck does it mean anyway?
+## What the fuck does it mean anyway?
 
 ---
 
@@ -23,7 +23,7 @@ Don't test the implementation of a function, test the result
 
 ---
 
-# So should I write unit tests everywhere and I'm good to go?
+## So should I write unit tests everywhere and I'm good to go?
 
 ---
 
@@ -75,7 +75,7 @@ If your component does not update often, is not complex, and is easy to see exac
 
 ---
 
-# Implementation
+## Implementation
 
 ---
 
@@ -109,7 +109,7 @@ Yeah, simple as that.
 
 🤓
 
-# _"But Pedro, can I create tests?"_
+## _"But Pedro, can I create tests?"_
 
 ---
 
@@ -121,33 +121,39 @@ Imagine a page like this:
 
 ---
 
-## What should I test here?
-
 import Counter from "../src/pages/Counter/Counter.js";
 
 <Counter />
 
 ---
 
-I guess you already know...
+What should I test there?
 
 ---
 
-- if it render without errors
+- If it render without errors
 
 - If it matches the snapshot
 
-- if it start with 0
+- If it start with 0
 
-- if the _increment-decrement_ works
+- If the _increment-decrement_ works
 
 ---
 
 ## First of all
 
-**always start your component by its tests**
+Always start your component by its tests
+
+---
 
 So the first thing you'll do when you start to create this component is create a `Counter.test.js`
+
+---
+
+## Checkout this guiding principles
+
+https://testing-library.com/docs/guiding-principles
 
 ---
 
@@ -167,7 +173,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 ---
 
-# Start with RLM
+## Start with RLM
 
 - Render the component
 
@@ -177,7 +183,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 ---
 
-## Test if it render
+## Test if it renders
 
 ```js
 it("Renders without crashing", () => {
@@ -225,6 +231,10 @@ But mainly, just keep in mind that you always prioritize visible stuff like `tex
 
 ---
 
+## Now to the real tests
+
+---
+
 ## Test if the counter start with 0
 
 ```js
@@ -269,7 +279,7 @@ it("Decrement work", () => {
 
 🎉
 
-# Profit
+## Profit
 
 ---
 
@@ -293,13 +303,13 @@ Yes, _but_ only if you test real actions, not functions
 
 ---
 
-And always remember
+Always remember
 
 **If you struggle to test something, its because you messed up**
 
 ---
 
-# Just for you to remember
+## Just for you to remember
 
 - Always create the test first
 - “Does it help test how our users use this application?”

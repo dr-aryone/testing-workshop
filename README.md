@@ -1,5 +1,5 @@
-# Example Tests
+# Testing Workshop
 
-[Guiding Principles](https://testing-library.com/docs/guide-which-query)
+Run `yarn present` to see the presentation
 
-[Which query should I use?](https://testing-library.com/docs/guide-which-query)
+And if you want to see the code to check more examples, run `yarn start` and see the `src/` folder
