@@ -1,44 +1,55 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { render, fireEvent } from "@testing-library/react";
 
 import App from "./App";
 
 describe("App Component", () => {
-  describe("Router", () => {
-    it("Should go to the Toggle Component", () => {
-      const { getByText, getByTestId } = render(<App />);
+  it("Renders without crashing", () => {
+    ReactDOM.render(<App />, document.createElement("div"));
 
-      const toggleLink = getByText("Toggle");
+    ReactDOM.unmountComponentAtNode(document.createElement("div"));
+  });
 
-      fireEvent.click(toggleLink);
+  it("Match Snapshot", () => {
+    const { firstChild } = render(<App />);
 
-      const toggleContainer = getByTestId("toggleContainer");
+    expect(firstChild).toMatchSnapshot();
+  });
 
-      expect(toggleContainer).toBeInTheDocument();
-    });
+  it("Should go to the Toggle Component", () => {
+    const { getByText, getByTestId } = render(<App />);
 
-    it("Should go to the Counter Component", () => {
-      const { getByText, getByTestId } = render(<App />);
+    const toggleLink = getByText("Toggle");
 
-      const counterLink = getByText("Counter");
+    fireEvent.click(toggleLink);
 
-      fireEvent.click(counterLink);
+    const toggleContainer = getByTestId("toggleContainer");
 
-      const counterContainer = getByTestId("counterContainer");
+    expect(toggleContainer).toBeInTheDocument();
+  });
 
-      expect(counterContainer).toBeInTheDocument();
-    });
+  it("Should go to the Counter Component", () => {
+    const { getByText, getByTestId } = render(<App />);
 
-    it("Should go to the ChangeName Component", () => {
-      const { getByText, getByTestId } = render(<App />);
+    const counterLink = getByText("Counter");
 
-      const changeNameLink = getByText("Change Name");
+    fireEvent.click(counterLink);
 
-      fireEvent.click(changeNameLink);
+    const counterContainer = getByTestId("counterContainer");
 
-      const changeNameContainer = getByTestId("changeNameContainer");
+    expect(counterContainer).toBeInTheDocument();
+  });
 
-      expect(changeNameContainer).toBeInTheDocument();
-    });
+  it("Should go to the ChangeName Component", () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    const changeNameLink = getByText("Change Name");
+
+    fireEvent.click(changeNameLink);
+
+    const changeNameContainer = getByTestId("changeNameContainer");
+
+    expect(changeNameContainer).toBeInTheDocument();
   });
 });

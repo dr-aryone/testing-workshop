@@ -26,4 +26,10 @@ describe("Menu Page", () => {
 
     expect(menu).toBeInTheDocument();
   });
+
+  it("Match Snapshot", () => {
+    const { firstChild } = renderWithRouter(<Menu />);
+
+    expect(firstChild).toMatchSnapshot();
+  });
 });

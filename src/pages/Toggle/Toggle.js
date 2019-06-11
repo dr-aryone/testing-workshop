@@ -5,6 +5,7 @@ const Toggle = () => {
 
   return (
     <div data-testid="toggleContainer">
+      <h2>Toggle</h2>
       <button onClick={() => toggleShow(!show)} data-testid="toggleButton">
         Toggle Paragraph
       </button>

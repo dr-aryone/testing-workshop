@@ -18,6 +18,12 @@ describe("ChangeName Page", () => {
     expect(changeName).toBeInTheDocument();
   });
 
+  it("Match Snapshot", () => {
+    const { firstChild } = render(<ChangeName />);
+
+    expect(firstChild).toMatchSnapshot();
+  });
+
   it("Loads with the right initial value", () => {
     const { getByTestId } = render(<ChangeName />);
 

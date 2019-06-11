@@ -11,7 +11,7 @@ import Menu from "./components/Menu/Menu";
 
 const Router = () => {
   return (
-    <BrowserRouter data-testid="appContainer">
+    <BrowserRouter>
       <Menu />
       <Switch>
         <Route path="/toggle" component={Toggle} />

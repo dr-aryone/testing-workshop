@@ -18,6 +18,12 @@ describe("Toggle Page", () => {
     expect(toggle).toBeInTheDocument();
   });
 
+  it("Match Snapshot", () => {
+    const { firstChild } = render(<Toggle />);
+
+    expect(firstChild).toMatchSnapshot();
+  });
+
   it("Toggle paragraph", () => {
     const { getByText, queryByTestId } = render(<Toggle />);
 

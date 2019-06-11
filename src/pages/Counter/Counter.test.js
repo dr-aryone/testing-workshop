@@ -18,6 +18,12 @@ describe("Counter Page", () => {
     expect(counter).toBeInTheDocument();
   });
 
+  it("Match Snapshot", () => {
+    const { firstChild } = render(<Counter />);
+
+    expect(firstChild).toMatchSnapshot();
+  });
+
   it("Loads with initial counter as 0", () => {
     const { getByTestId } = render(<Counter />);
 
