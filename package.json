@@ -15,6 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-push": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "present": "mdx-deck presentation/index.mdx",
     "present-build": "mdx-deck build presentation/index.mdx"
@@ -40,8 +41,15 @@
       "!src/index.js"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test-push"
+    }
+  },
   "devDependencies": {
     "@testing-library/react": "^8.0.1",
+    "cross-env": "^5.2.0",
+    "husky": "^2.4.1",
     "jest-dom": "^3.5.0",
     "mdx-deck": "^2.3.2"
   }
