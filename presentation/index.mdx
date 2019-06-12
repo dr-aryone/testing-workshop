@@ -346,6 +346,31 @@ _"If I do it, is this component unbreakable?"_
 
 ---
 
+🔥
+
+## Bonus
+
+---
+
+#### If I were you, I would add a _pre-push_ script, so you doesn't fuck your branch
+
+---
+
+## To do so, you just follow these steps:
+
+- Install _husky_ to your project
+- Add a _pre-push_ script to your _package.json_
+
+```js
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test"
+    }
+  },
+```
+
+---
+
 👌
 
 #### Checkout this repository to see more examples:
