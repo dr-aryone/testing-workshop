@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import Title from "../../components/Title/Title";
 
 const Toggle = () => {
   const [show, toggleShow] = useState(false);
 
   return (
     <div data-testid="toggleContainer">
-      <h2>Toggle</h2>
+      <Title title="Toggle" />
       <button onClick={() => toggleShow(!show)} data-testid="toggleButton">
         Toggle Paragraph
       </button>

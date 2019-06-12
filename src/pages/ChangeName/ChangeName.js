@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Title from "../../components/Title/Title";
 
 const ChangeName = () => {
   const [name, setName] = useState(
@@ -14,7 +15,7 @@ const ChangeName = () => {
   }, [name]);
   return (
     <div data-testid="changeNameContainer">
-      <h2>Change Name</h2>
+      <Title title="Change Name" />
       <p data-testid="nameValue">{name}</p>
       <input data-testid="inputName" ref={nameRef} type="text" />
       <button

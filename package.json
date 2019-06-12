@@ -4,6 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.1",
-    "jest-dom": "^3.4.0",
+    "jest-dom": "^3.5.0",
     "mdx-deck": "^2.3.2"
   }
 }

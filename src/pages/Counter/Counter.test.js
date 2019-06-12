@@ -33,11 +33,11 @@ describe("Counter Page", () => {
   });
 
   it("Increment work", () => {
-    const { getByTestId } = render(<Counter />);
+    const { getByTestId, getByText } = render(<Counter />);
 
     const countValue = getByTestId("countValue");
 
-    const increment = getByTestId("incrementButton");
+    const increment = getByText("+");
 
     expect(countValue.textContent).toBe("0");
 
@@ -47,16 +47,16 @@ describe("Counter Page", () => {
   });
 
   it("Decrement work", () => {
-    const { getByTestId } = render(<Counter />);
+    const { getByTestId, getByText } = render(<Counter />);
 
     const countValue = getByTestId("countValue");
 
-    const decrement = getByTestId("decrementButton");
+    const decrement = getByText("-");
 
     expect(countValue.textContent).toBe("0");
 
-    fireEvent.click(decrement);
+    for (let i = 0; i < 10; i += 1) fireEvent.click(decrement);
 
-    expect(countValue.textContent).toBe("-1");
+    expect(countValue.textContent).toBe("-10");
   });
 });

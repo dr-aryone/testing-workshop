@@ -271,8 +271,8 @@ it("Increment work", () => {
   const countValue = getByTestId("countValue");
   const increment = getByTestId("incrementButton");
   expect(countValue.textContent).toBe("0");
-  fireEvent.click(increment);
-  expect(countValue.textContent).toBe("1");
+  for (let i = 0; i < 10; i += 1) fireEvent.click(increment);
+  expect(countValue.textContent).toBe("10");
 });
 ```
 
@@ -286,8 +286,8 @@ it("Decrement work", () => {
   const countValue = getByTestId("countValue");
   const decrement = getByTestId("decrementButton");
   expect(countValue.textContent).toBe("0");
-  fireEvent.click(decrement);
-  expect(countValue.textContent).toBe("-1");
+  for (let i = 0; i < 10; i += 1) fireEvent.click(decrement);
+  expect(countValue.textContent).toBe("-10");
 });
 ```
 
@@ -299,9 +299,13 @@ it("Decrement work", () => {
 
 ---
 
+?
+
 ## The real question is:
 
 ---
+
+🔷
 
 _"If I do it, is this component unbreakable?"_
 
@@ -325,15 +329,19 @@ _"If I do it, is this component unbreakable?"_
 
 ---
 
-#### If you struggle to test something, you fucked up
+## And always remember
 
 ---
 
-## Just for you to remember
+#### If you struggle to test something, _you fucked up_
+
+---
+
+## Summary
 
 - Always create the test first
 - “Does it help test how our users use this application?”
-- Never put the blame on the test, he just want to help
+- Never put the blame on the test
 - Don't cry when a bug appears in production 😂
 
 ---
