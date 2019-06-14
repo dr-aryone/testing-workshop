@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "present": "mdx-deck presentation/index.mdx",
-    "now-build": "mdx-deck build presentation/index.mdx --no-html"
+    "now-build": "mdx-deck build presentation/index.mdx --no-html",
+    "coverage": "yarn test --coverage --watchAll=false"
   },
   "eslintConfig": {
     "extends": "react-app"
