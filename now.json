@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "testing-workshop",
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
+}

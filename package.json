@@ -14,9 +14,8 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "present": "mdx-deck presentation/index.mdx",
-    "build": "mdx-deck build presentation/index.mdx"
+    "now-build": "mdx-deck build presentation/index.mdx --no-html"
   },
   "eslintConfig": {
     "extends": "react-app"
