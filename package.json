@@ -13,12 +13,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-push": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "present": "mdx-deck presentation/index.mdx",
-    "present-build": "mdx-deck build presentation/index.mdx"
+    "build": "mdx-deck build presentation/index.mdx"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn test-push"
+      "pre-push": "cross-env CI=true react-scripts test --env=jsdom"
     }
   },
   "devDependencies": {

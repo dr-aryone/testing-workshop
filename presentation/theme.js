@@ -5,7 +5,16 @@ export default {
     fontSize: "0.5em"
   },
 
+  pre: {
+    lineHeight: "1 !important",
+    backgroundColor: "#ffffff !important"
+  },
+
   a: {
     color: "#ffffff"
+  },
+
+  css: {
+    padding: "2em"
   }
 };
