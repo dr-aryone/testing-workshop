@@ -17,13 +17,13 @@
 yarn
 ```
 
-## To run the app
+## Run app
 
 ```sh
 yarn start
 ```
 
-## To run the presentation
+## Run presentation
 
 ```sh
 yarn present
