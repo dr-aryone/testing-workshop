@@ -1,13 +1,15 @@
-<h1 align="center">Welcome to Testing Workshop 👋</h1>
-<p>
-  <img src="https://travis-ci.com/pedroapfilho/testing-workshop.svg?branch=master" />
-  <a href="https://snyk.io//test/github/pedroapfilho/testing-workshop?targetFile=package.json"><img src="https://snyk.io//test/github/pedroapfilho/testing-workshop/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io//test/github/pedroapfilho/testing-workshop?targetFile=package.json" style="max-width:100%;"></a>
+<h1 align="center">Testing Workshop</h1>
+<div align="center">
 
-</p>
+[![codecov](https://codecov.io/gh/pedroapfilho/testing-workshop/branch/master/graph/badge.svg)](https://codecov.io/gh/pedroapfilho/testing-workshop)
+[![Build Status](https://travis-ci.com/pedroapfilho/testing-workshop.svg?branch=master)](https://travis-ci.com/pedroapfilho/testing-workshop)
+[![Known Vulnerabilities](https://snyk.io//test/github/pedroapfilho/testing-workshop/badge.svg?targetFile=package.json)](https://snyk.io//test/github/pedroapfilho/testing-workshop?targetFile=package.json)
+
+</div>
 
 > Workshop about tests with @testing-library/react
 
-### 🏠 [Homepage](https://testing-workshop.pedroapfilho.now.sh/)
+### Checkout the [Workshop](https://testing-workshop.pedroapfilho.now.sh/)
 
 ## Install
 
@@ -15,10 +17,16 @@
 yarn
 ```
 
-## Usage
+## To run the app
 
 ```sh
 yarn start
+```
+
+## To run the presentation
+
+```sh
+yarn present
 ```
 
 ## Run tests
